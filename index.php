@@ -1,12 +1,12 @@
 <?php 
 $title = "Livre d'or";  
-require_once 'Messages.php';
-require_once 'GuestBook.php';
+require_once 'class/Messages.php';
+require_once 'class/GuestBook.php';
 
 $errors = null;
 $success = null;
 
-$guestbook = new GuestBook(__DIR__ . DIRECTORY_SEPARATOR . 'messages');
+$guestbook = new GuestBook(__DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'messages.txt');
 
 if(isset($_POST['username']) && isset($_POST['message'])){
     //New message
@@ -25,7 +25,7 @@ if(isset($_POST['username']) && isset($_POST['message'])){
 $messages = $guestbook->getMessages();
 
 
-require_once 'header.php';
+require_once 'elements/header.php';
 ?>
 
 
@@ -64,3 +64,6 @@ require_once 'header.php';
         <?php endforeach ?>
     <?php endif ?>
 </div>
+
+
+<?php require_once 'elements/footer.php'?>
